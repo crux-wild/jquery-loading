@@ -55,7 +55,7 @@
      * @property {String} icon
      * loading ico font class
      */
-    icon: 'fa fa-spinner',
+    icon: 'fa fa-refresh',
     /**
      * @property {String} loading
      * trigger loading event
@@ -205,9 +205,11 @@
 
       var prevText = $element.text();
 
+      var tips = this.options.tips || '';
+
       $element
         .find('[role~="loading-text"]')
-          .text(this.options.tips)
+          .text(tips)
             .attr('aria-loading-text-status', 'loading')
       .appendTo($element)
 
