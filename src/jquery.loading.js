@@ -37,6 +37,11 @@
 
   var defaults = {
     /**
+     * @property {Boolean} parse
+     * whether automatic parsing
+     */
+    parse: true,
+    /**
      * @property {Number} angle
      * loading rotate angle
      */
@@ -82,8 +87,15 @@
    * parse document,automatic initialization container element
    */
   var parseDocument = function ParseDocumentF() {
-    var $loadingContainer = $('[role~="loading-container"]');
+    var $loadingContainer;
 
+    if ($.loading_config != null) {
+      $.loading($.loading_config);
+
+      if (!defaults.parse) { return false; }
+    }
+
+    $loadingContainer = $('[role~="loading-container"]');
     $loadingContainer.loading();
   };
 
